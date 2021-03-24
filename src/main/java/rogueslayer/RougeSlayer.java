@@ -1,4 +1,4 @@
-package rougeslayer;
+package rogueslayer;
 
 import nl.han.ica.oopg.engine.GameEngine;
 
