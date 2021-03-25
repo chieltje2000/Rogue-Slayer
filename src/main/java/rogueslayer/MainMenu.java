@@ -1,30 +1,47 @@
 package rogueslayer;
 
 import nl.han.ica.oopg.objects.TextObject;
+
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class MainMenu extends Screen{
 
-    private final RogueSlayer rs;
+    private ExitButton exit;
     private String text = "test";
     ArrayList<Button> buttons = new ArrayList<Button>();
+    Button b = new Button("banaan");
 
-    protected MainMenu(RogueSlayer rogueSlayer){
-        this.rs = rogueSlayer;
+
+    MainMenu(RogueSlayer rogueSlayer){
+        super(rogueSlayer);
+        setupMainMenu();
+    }
+
+    @Override
+    protected void updateScreen() {
+    //System.out.println("test");
+    }
+
+    @Override
+    public void MouseClickedScreen(MouseEvent e) {
+        b.onClick(e);
     }
 
     public void setupMainMenu(){
         TextObject Titel = new TextObject("RogueSlayer",40);
         Titel.setForeColor(255,255,255,255);
-        rs.addGameObject(Titel,rs.getWorldWidth()/5*2,100);
+        rs.addGameObject(Titel,525,100);
 
-        Button button = new Button(575,500, 280,280,"Knop");
-        addGameObjects(button,575,500);
-
-        TextObject Start = new TextObject("Start",40);
-        Start.setForeColor(255,255,0,255);
-        rs.addGameObject(Start,580,500);
+        Button Start = new Button("start");
+        rs.addGameObject(Start,565,400);
+        creatExit();
+       // Button Exit = new Button("exit");
+       // rs.addGameObject(Exit,565,500);
     }
 
-
+    private void creatExit(){
+        exit = new ExitButton(this);
+        rs.addGameObject(exit,565,500);
+    }
 }

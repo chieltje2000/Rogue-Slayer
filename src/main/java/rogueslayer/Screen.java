@@ -1,14 +1,15 @@
 package rogueslayer;
 
-public abstract class Screen {
-	protected RougeSlayer rs;
+import java.awt.event.MouseEvent;
 
-	public Screen(RougeSlayer rs) {
+public abstract class Screen {
+	protected RogueSlayer rs;
+
+	public Screen(RogueSlayer rs) {
 		this.rs = rs;
 	}
 
 	protected abstract void updateScreen();
 
-	protected abstract void MouseClickedScreen();
-
+    public abstract void MouseClickedScreen(MouseEvent e);
 }

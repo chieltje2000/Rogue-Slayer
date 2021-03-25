@@ -1,8 +1,10 @@
 package rogueslayer;
 
+import java.awt.event.MouseEvent;
+
 public class Game extends Screen{
 
-	public Game(RougeSlayer rs) {
+	public Game(RogueSlayer rs) {
 		super(rs);
 		// TODO Auto-generated constructor stub
 	}
@@ -14,9 +16,9 @@ public class Game extends Screen{
 	}
 
 	@Override
-	protected void MouseClickedScreen() {
-		// TODO Auto-generated method stub
-		
+	public void MouseClickedScreen(MouseEvent e) {
+
 	}
+
 
 }
