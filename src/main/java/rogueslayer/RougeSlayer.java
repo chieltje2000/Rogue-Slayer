@@ -21,8 +21,8 @@ public class RougeSlayer extends GameEngine {
 
 	@Override
 	public void setupGame() {
-        int worldWidth = 800;
-        int worldHeight = 600;
+        int worldWidth = 1200;
+        int worldHeight = 900;
         difficulty = 1;
         
         kindOfScreens.add(new MainMenu(this));
