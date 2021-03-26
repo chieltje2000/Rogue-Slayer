@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 public class MainMenu extends Screen{
 
-    private ExitButton exit;
     private String text = "test";
     ArrayList<Button> buttons = new ArrayList<Button>();
-    Button b = new Button("banaan");
-
+    Button b = new Button("start");
+    ExitButton eb = new ExitButton("exit");
 
     MainMenu(RogueSlayer rogueSlayer){
         super(rogueSlayer);
@@ -33,15 +32,13 @@ public class MainMenu extends Screen{
         Titel.setForeColor(255,255,255,255);
         rs.addGameObject(Titel,525,100);
 
-        Button Start = new Button("start");
-        rs.addGameObject(Start,565,400);
-        creatExit();
-       // Button Exit = new Button("exit");
-       // rs.addGameObject(Exit,565,500);
+        rs.addGameObject(b,565,400);
+
+        rs.addGameObject(eb,557,500);
     }
 
-    private void creatExit(){
-        exit = new ExitButton(this);
-        rs.addGameObject(exit,565,500);
+    private void removeObject(){
+
     }
+
 }

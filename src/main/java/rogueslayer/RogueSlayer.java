@@ -34,7 +34,6 @@ public class RogueSlayer extends GameEngine {
         setView(view);
         size(worldWidth, worldHeight);	
         System.out.println(getWidth());
-
 	}
 	
 	public void setCurrentScreen(int indexOfScreen) {
