@@ -16,7 +16,17 @@ public class Game extends Screen{
 	}
 
 	@Override
-	public void MouseClickedScreen(MouseEvent e) {
+	public void mouseClickedScreen(MouseEvent e) {
+		rs.setCurrentScreen(0);
+	}
+
+	@Override
+	public void mouseMovedScreen(MouseEvent e) {
+
+	}
+
+	@Override
+	public void addAllGameObjects() {
 
 	}
 

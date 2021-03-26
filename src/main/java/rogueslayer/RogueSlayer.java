@@ -28,7 +28,7 @@ public class RogueSlayer extends GameEngine {
         
         kindOfScreens.add(new MainMenu(this));
         kindOfScreens.add(new Game(this));
-        currentScreen = kindOfScreens.get(0);
+        setCurrentScreen(0);
         View view = new View(worldWidth, worldHeight);
         view.setBackground(loadImage(RogueSlayer.MEDIA_URL.concat("background.png")));
         setView(view);
@@ -37,7 +37,9 @@ public class RogueSlayer extends GameEngine {
 	}
 	
 	public void setCurrentScreen(int indexOfScreen) {
+		deleteAllGameOBjects();
 		this.currentScreen = this.kindOfScreens.get(indexOfScreen);
+		currentScreen.addAllGameObjects();
 	}
 
 	@Override
@@ -46,7 +48,10 @@ public class RogueSlayer extends GameEngine {
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent e) {currentScreen.MouseClickedScreen(e);
+	public void mouseClicked(MouseEvent e) {currentScreen.mouseClickedScreen(e);
 	}
-
+	@Override
+	public void mouseMoved(MouseEvent e){
+		currentScreen.mouseMovedScreen(e);
+	}
 }

@@ -11,5 +11,9 @@ public abstract class Screen {
 
 	protected abstract void updateScreen();
 
-    public abstract void MouseClickedScreen(MouseEvent e);
+    public abstract void mouseClickedScreen(MouseEvent e);
+
+    public abstract void mouseMovedScreen(MouseEvent e);
+
+	public abstract void addAllGameObjects();
 }
