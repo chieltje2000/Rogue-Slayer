@@ -11,18 +11,21 @@ public class Button extends SpriteObject implements Clickable {
     private int mouseX,mouseY;
     private RogueSlayer rs;
     private MainMenu m;
-
-     Button(RogueSlayer rs, String kindsButton){
+    private int x, y, width, height;
+     Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
          super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton +".png")));
          this.kindsButton=kindsButton;
          this.rs = rs;
+         this.x=x;
+         this.y=y;
+         this.width=width;
+         this.height=height;
     }
 
     @Override
     public void update() {
 
     }
-
 
     @Override
     public void onClick(MouseEvent e) {
@@ -32,13 +35,11 @@ public class Button extends SpriteObject implements Clickable {
         System.out.println("mouseX: "+mouseX);
         System.out.println("mouseY: "+mouseY);
 
-        //wanneer muis binnen coordinaten is, voer meegegeven functie uit
-       if (mouseX > 565 && mouseX <708 && mouseY > 400 &&mouseY < 475){
-           if (kindsButton == "start"){
-               rs.setCurrentScreen(1);
-           }
-           System.out.println("inside the "+kindsButton+"block");
-       }else{System.out.println("outside the "+kindsButton+"block");}
+        if (kindsButton == "start"){
+            if (mouseX > x && mouseX <x+width && mouseY > y &&mouseY < y+height){
+                rs.setCurrentScreen(1);
+            }
+        }
 
         if (mouseX > 565 && mouseX <708 && mouseY > 500 &&mouseY < 575){
             if (kindsButton == "exit"){
@@ -51,8 +52,26 @@ public class Button extends SpriteObject implements Clickable {
     public void onHover(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
-        if (mouseX > 565 && mouseX <708 && mouseY > 400 &&mouseY < 475){
-            System.out.println("inside the "+kindsButton+"block");
-        }else{System.out.println("outside the "+kindsButton+"block");}
+
+        switch (kindsButton){
+            case "start":
+                System.out.println(mouseCheck(x,y, width, height));
+                break;
+            case "exit":
+                System.out.println(mouseCheck(x,y, width, height));
+                break;
+            case "menu":
+                System.out.println(mouseCheck(x,y, width, height));
+                break;
+
+        }
+    }
+
+    private String mouseCheck(int x,int y,int width,int height){
+         String check;
+        if (mouseX > x && mouseX < x + width && mouseY > y && mouseY < y + height){
+           check = "inside the "+kindsButton+"block";
+        }else{ check = "outside the "+kindsButton+"block";}
+        return check;
     }
 }

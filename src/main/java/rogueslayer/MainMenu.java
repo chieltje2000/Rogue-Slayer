@@ -9,7 +9,6 @@ public class MainMenu extends Screen{
 
     private String text = "test";
     ArrayList<Button> buttons = new ArrayList<Button>();
-    private Button b;
 
     MainMenu(RogueSlayer rogueSlayer){
         super(rogueSlayer);
@@ -38,21 +37,17 @@ public class MainMenu extends Screen{
         rs.addGameObject(Titel,525,100);
 
         for (int i = 0; i<buttons.size();i++){
-            rs.addGameObject(buttons.get(i),565,i*100 +300);
+            rs.addGameObject(buttons.get(i),565,i*100+300);
         }
     }
 
     public void setupMainMenu(){
-        Button menu = new Button(rs, "menu");
-        Button start = new Button(rs, "start");
-        Button exit = new Button(rs, "exit");
+        Button menu = new Button(rs,565,300,143,75, "menu");
+        Button start = new Button(rs,565,400,143,75, "start");
+        Button exit = new Button(rs,565,500,143 ,75, "exit");
 
         buttons.add(menu);
         buttons.add(start);
         buttons.add(exit);
-
-       // rs.addGameObject(menu,565,300);
-       // rs.addGameObject(start,565,400);
-       // rs.addGameObject(exit,557,500);
     }
 }
