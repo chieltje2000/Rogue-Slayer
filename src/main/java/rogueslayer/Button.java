@@ -35,16 +35,23 @@ public class Button extends SpriteObject implements Clickable {
         System.out.println("mouseX: "+mouseX);
         System.out.println("mouseY: "+mouseY);
 
-        if (kindsButton == "start"){
-            if (mouseX > x && mouseX <x+width && mouseY > y &&mouseY < y+height){
-                rs.setCurrentScreen(1);
-            }
-        }
 
-        if (mouseX > 565 && mouseX <708 && mouseY > 500 &&mouseY < 575){
-            if (kindsButton == "exit"){
-                System.exit(0);
-            }
+        switch (kindsButton){
+            case "start":
+                if (mouseCheck(x,y, width, height)){
+                    rs.setCurrentScreen(1);
+                }
+                break;
+            case "exit":
+                if (mouseCheck(x,y, width, height)){
+                    System.exit(0);
+                }
+                break;
+            case "menu":
+                if (mouseCheck(x,y, width, height)){
+                    rs.setCurrentScreen(0);
+                }
+                break;
         }
     }
 
@@ -67,11 +74,9 @@ public class Button extends SpriteObject implements Clickable {
         }
     }
 
-    private String mouseCheck(int x,int y,int width,int height){
-         String check;
+    private boolean mouseCheck(int x,int y,int width,int height){
         if (mouseX > x && mouseX < x + width && mouseY > y && mouseY < y + height){
-           check = "inside the "+kindsButton+"block";
-        }else{ check = "outside the "+kindsButton+"block";}
-        return check;
+          return true;
+        }else{ return false;}
     }
 }
