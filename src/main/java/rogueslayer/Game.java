@@ -40,10 +40,9 @@ public class Game extends Screen {
 	private void enemyTurn() {
 
 		if (enemy.hp <= 0) {
-			enemy.onDeath(player);
 			nextFloor();
 		} else {
-			enemy.atack(player);
+			enemy.doDamage(player);
 			if (player.hp <= 0) {
 				dl.gameLose();
 			}
@@ -55,6 +54,11 @@ public class Game extends Screen {
 	}
 
 	private void nextRound() {
+//		player.refreshDEF();
+//		player.refreshHP();
+//		enemy.refreshDEF();
+//		enemy.refreshHP();
+//		player.drawCard();
 		playerTurn = true;
 		currentRound += 1;
 	}
@@ -65,11 +69,13 @@ public class Game extends Screen {
 		playerTurn = true;
 		System.out.println("hier");
 		enemy.removeAllGameObjects();
+		player.reward();
+		player.resetDeck();
 		generateEnemy();
 		currentRound = 1;
 		currentFloor += 1;
 		if (currentFloor == 10) {
-			// do boss fight
+			enemy.bossMode();
 		} else if (currentFloor == 11) {
 			dl.gameWin();
 		}
@@ -79,85 +85,50 @@ public class Game extends Screen {
 		Random random = new Random();
 		int randomNumber = random.nextInt(3);
 		if (randomNumber == 0) {
-<<<<<<< HEAD
-			enemy = new Spider(rs, 23, 50, 350, 350, 0);
-=======
-			enemy = new Spider(rs,"spider",50,50);
->>>>>>> master
-			System.out.println("spider");
+			enemy = new Spider(rs, 23, 50, 350, 350, 10);
+
 
 		} else if (randomNumber == 1) {
-<<<<<<< HEAD
-			enemy = new Golem(rs, 48, 50, 350, 350, 0);
-			System.out.println("golem");
+			enemy = new Golem(rs, 48, 50, 350, 350, 10);
 		} else if (randomNumber == 2) {
-			enemy = new InfectedMiner(rs, 11, 50, 350, 350, 0);
-=======
-			enemy = new Golem(rs,"spider",50,50);
-			System.out.println("golem");
-		} else if (randomNumber == 2) {
-			enemy = new InfectedMiner(rs,"spider",50,50);
->>>>>>> master
-			System.out.println("infected miner");
+			enemy = new InfectedMiner(rs, 11, 50, 350, 350, 10);
 		}
 		enemy.addAllGameObjects();
+		player.enemyChanged(enemy);
 	}
 
 	private void generatePlayer() {
 		player = new Player(rs, 200, 350);
+		player.addAllGameObjects();
 	}
 
 	@Override
 	public void mouseClickedScreen(MouseEvent e) {
-		// player card klick hier
-		// test code
-//		nextRound();
-//		if (currentFloor > 10) {
-//			rs.setCurrentScreen(0);
-//		}
+
 		if (dl.isClicked) {
-			enemy.takeDamage(10);
+			player.onClick(e);
 			playerTurn = false;
 		} else {
 			dl.onClick(e);
 		}
-<<<<<<< HEAD
-		// rs.setCurrentScreen(0);
-=======
-		dl.onClick(e);
-		pl.onClick(e);
-		//rs.setCurrentScreen(0);
->>>>>>> master
-
 	}
 
 	@Override
 	public void mouseMovedScreen(MouseEvent e) {
 		// player card on hover hier doen
-		pl.onHover(e);
+		player.onHover(e);
 	}
 
 	@Override
 	public void addAllGameObjects() {
 		this.currentFloor = 1;
-		generateEnemy();
 		generatePlayer();
+		generateEnemy();
+		
 		rs.addGameObject(round, 0, 0);
 		rs.addGameObject(floor, 100, 0);
-
-<<<<<<< HEAD
-		dl.gameIntro();
-		player.addAllGameObjects();
-
-=======
-		pl.addAllGameObjects();
 		dl.gameIntro();
 
-		rs.addGameObject(pl,200,350);
-		pl.drawHP();
-		pl.drawDEF();
-		pl.takeDamage(90);
->>>>>>> master
 	}
 
 }

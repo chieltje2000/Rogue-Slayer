@@ -13,9 +13,4 @@ public class InfectedMiner extends Enemy {
 		hp *= 2;
 		refreshHP();
 	}
-
-
-    protected InfectedMiner(RogueSlayer rs, String typeEntity, int maxHP, int maxDEF) {
-        super(rs, typeEntity, maxHP, maxDEF);
-    }
 }

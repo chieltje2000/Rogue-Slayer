@@ -1,72 +1,53 @@
 package rogueslayer;
 
-<<<<<<< HEAD
 import nl.han.ica.oopg.objects.TextObject;
 
 public abstract class Enemy extends Entity {
 	private int attack;
 	private TextObject attackCount;
+	private TextObject bossText;
+	private boolean boss = false;
+	
 
 	protected Enemy(String sprite, RogueSlayer rs, int maxHP, int maxDEF, int x, int y, int attack) {
 		super(sprite, rs, maxHP, maxDEF, x, y);
 		this.attack = attack;
 	}
 
-	@Override
-	protected void onDeath(Player player) {
-		player.getNewCard();
-	}
-	
-	public void atack(Player player) {
-		player.takeDamage(attack);
-	}
-
 	public abstract void special();
 	
-	@Override
-	public void onDeath() {
 
-	}
-
-	@Override
-	public void update() {
-
-	}
-
-	private void drawDEF() {
-		attackCount = new TextObject(Integer.toString(def), 20);
+	private void drawAtack() {
+		attackCount = new TextObject("attack:"+ attack, 20);
 		attackCount.setForeColor(0, 0, 255, 255);
 		rs.addGameObject(attackCount, getX(), getY() - 100);
-		attackCount.setText("attack:"+ attack);
 	}
 
 	@Override
 	protected void addAllGameObjects() {
 		// TODO Auto-generated method stub
 		super.addAllGameObjects();
-		drawDEF();
+		drawAtack();
 	}
 	@Override
 	protected void removeAllGameObjects() {
 		// TODO Auto-generated method stub
 		super.removeAllGameObjects();
 		rs.deleteGameObject(attackCount);
+		if(boss) {
+			rs.deleteGameObject(bossText);
+		}
 	}
-=======
-public class Enemy extends Entity {
->>>>>>> master
-
-    protected Enemy(RogueSlayer rs, String typeEntity, int maxHP, int maxDEF) {
-        super(rs, typeEntity, maxHP, maxDEF);
-    }
-
-    @Override
-    protected void onDeath(Entity entity) {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
+	
+	public void bossMode()
+	{
+		boss = true;
+		bossText = new TextObject("BOSS", 20);
+		bossText.setForeColor(0, 0, 255, 255);
+		rs.addGameObject(bossText, getX(), getY() - 150);
+	}
+	
+	public void doDamage(Player player) {
+		player.takeDamage(attack);
+	}
 }
