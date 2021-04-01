@@ -12,5 +12,6 @@
     <orderEntry type="library" name="minim-1.0" level="project" />
     <orderEntry type="library" name="Maven: processing:core:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: processing.sound:minim:1.0" level="project" />
+    <orderEntry type="library" name="Maven: processing:gifanimation:1.0" level="project" />
   </component>
 </module>

@@ -68,13 +68,13 @@ public class Game extends Screen {
 		Random random = new Random();
 		int randomNumber = random.nextInt(3);
 		if (randomNumber == 0) {
-			enemy = new Spider();
+			enemy = new Spider(rs,"spider",50,50);
 			System.out.println("spider");
 		} else if (randomNumber == 1) {
-			enemy = new Golem();
+			enemy = new Golem(rs,"spider",50,50);
 			System.out.println("golem");
 		} else if (randomNumber == 2) {
-			enemy = new InfectedMiner();
+			enemy = new InfectedMiner(rs,"spider",50,50);
 			System.out.println("infected miner");
 		}
 		// TODO Auto-generated method stub
@@ -89,8 +89,8 @@ public class Game extends Screen {
 		if (currentFloor > 10) {
 			rs.setCurrentScreen(0);
 		}
-
 		dl.onClick(e);
+		pl.onClick(e);
 		//rs.setCurrentScreen(0);
 
 	}
@@ -98,6 +98,7 @@ public class Game extends Screen {
 	@Override
 	public void mouseMovedScreen(MouseEvent e) {
 		// player card on hover hier doen
+		pl.onHover(e);
 	}
 
 	@Override
@@ -105,8 +106,10 @@ public class Game extends Screen {
 		generateEnemy();
 		rs.addGameObject(round, 0, 0);
 		rs.addGameObject(floor, 100, 0);
-		
+
+		pl.addAllGameObjects();
 		dl.gameIntro();
+
 		rs.addGameObject(pl,200,350);
 		pl.drawHP();
 		pl.drawDEF();

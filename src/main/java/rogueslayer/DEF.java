@@ -1,25 +1,29 @@
 package rogueslayer;
 
-import nl.han.ica.oopg.objects.Sprite;
+import nl.han.ica.oopg.objects.TextObject;
 
 public class DEF extends Card{
 
-    private String sprite;
+    private TextObject tekst;
     private int defense = 12;
+    Player pl;
 
-    protected DEF(RogueSlayer rs) {
-        super(new Sprite(RogueSlayer.MEDIA_URL.concat("def.png")),rs);
+    protected DEF(RogueSlayer rs,Player pl, int cardWidth, int cardHeight) {
+        super(rs,"defcard",cardWidth, cardHeight);
+        this.pl = pl;
     }
 
 
     @Override
-    public void doCardEffect(Entity entity) {
-        entity.def += defense;
+    public void doCardEffect() {
+        pl.def += defense;
     }
 
     @Override
-    public void drawCard() {
-
+    public void cardText(RogueSlayer rs) {
+        tekst = new TextObject("Defense+12",18);
+        tekst.setForeColor(255,0,0,255);
+        rs.addGameObject(tekst,getX(),getY()+125);
     }
 
     @Override

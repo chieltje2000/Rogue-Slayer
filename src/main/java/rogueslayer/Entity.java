@@ -15,15 +15,10 @@ public abstract class Entity extends SpriteObject {
     protected RogueSlayer rs;
     private TextObject hpCount;
     private TextObject defCount;
+    private String typeEntity;
 
-    /**
-     * Create a new SpriteObject with a Sprite object.
-     *
-     * @param sprite The sprite
-     */
-
-    protected Entity(Sprite sprite,RogueSlayer rs,int maxHP,int maxDEF) {
-        super(sprite);
+    protected Entity(RogueSlayer rs,String typeEntity,int maxHP,int maxDEF) {
+        super(new Sprite(RogueSlayer.MEDIA_URL.concat(typeEntity +".png")));
         this.rs = rs;
         this.maxHP = maxHP;
         this.hp = maxHP;
@@ -32,7 +27,7 @@ public abstract class Entity extends SpriteObject {
 
     }
 
-    protected abstract void onDeath();
+    protected abstract void onDeath(Entity entity);
 
     protected void takeDamage(int damage){
         int restDamage = 0;
@@ -49,7 +44,7 @@ public abstract class Entity extends SpriteObject {
         if (hp<0){
             hp = 0;
             refreshHP();
-            onDeath();
+            onDeath(this);
         }
     }
 

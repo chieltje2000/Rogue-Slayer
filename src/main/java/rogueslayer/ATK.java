@@ -1,25 +1,29 @@
 package rogueslayer;
 
-import nl.han.ica.oopg.objects.Sprite;
+
+import nl.han.ica.oopg.objects.TextObject;
 
 public class ATK extends Card{
 
-    private String sprite;
+    Enemy enemy;
+    private TextObject tekst;
     private int damage = 10;
 
-    protected ATK(RogueSlayer rs) {
-        super(new Sprite(RogueSlayer.MEDIA_URL.concat("atk.png")),rs);
-    }
-
-
-    @Override
-    public void doCardEffect(Entity entity) {
-        entity.takeDamage(10);
+    protected ATK(RogueSlayer rs,Enemy enemy, int cardWidth, int cardHeight) {
+        super(rs,"atkcard",cardWidth, cardHeight);
+        this.enemy = enemy;
     }
 
     @Override
-    public void drawCard() {
+    public void doCardEffect() {
+        enemy.takeDamage(damage);
+    }
 
+    @Override
+    public void cardText(RogueSlayer rs){
+        tekst = new TextObject("ATK+ 10",18);
+        tekst.setForeColor(255,0,0,255);
+        rs.addGameObject(tekst,getX(),getY()+125);
     }
 
     @Override
