@@ -1,5 +1,6 @@
 package rogueslayer;
 
+import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 
@@ -12,7 +13,9 @@ public class Button extends SpriteObject implements Clickable {
     private RogueSlayer rs;
     private int x, y, width, height;
     private Dialog dl;
+    private Card card;
 
+    //button
      Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
 			super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton + ".png")));
          this.kindsButton=kindsButton;
@@ -22,11 +25,12 @@ public class Button extends SpriteObject implements Clickable {
          this.width=width;
          this.height=height;
     }
-
+    //dialog
     Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton, Dialog dl){
         this(rs, x, y, width, height, kindsButton);
         this.dl = dl;
     }
+
     @Override
     public void update() {
 
@@ -81,7 +85,6 @@ public class Button extends SpriteObject implements Clickable {
             case "menu":
                 System.out.println(mouseCheck(x,y, width, height));
                 break;
-
         }
     }
 

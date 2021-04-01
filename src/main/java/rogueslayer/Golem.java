@@ -1,5 +1,6 @@
 package rogueslayer;
 
+<<<<<<< HEAD
 public class Golem extends Enemy {
 	private static String sprite = "golem";
 
@@ -17,5 +18,11 @@ public class Golem extends Enemy {
 	}
 
 
+=======
+public class   Golem extends Enemy {
+>>>>>>> master
 
+    protected Golem(RogueSlayer rs, String typeEntity, int maxHP, int maxDEF) {
+        super(rs, typeEntity, maxHP, maxDEF);
+    }
 }

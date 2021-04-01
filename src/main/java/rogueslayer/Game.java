@@ -79,14 +79,25 @@ public class Game extends Screen {
 		Random random = new Random();
 		int randomNumber = random.nextInt(3);
 		if (randomNumber == 0) {
+<<<<<<< HEAD
 			enemy = new Spider(rs, 23, 50, 350, 350, 0);
+=======
+			enemy = new Spider(rs,"spider",50,50);
+>>>>>>> master
 			System.out.println("spider");
 
 		} else if (randomNumber == 1) {
+<<<<<<< HEAD
 			enemy = new Golem(rs, 48, 50, 350, 350, 0);
 			System.out.println("golem");
 		} else if (randomNumber == 2) {
 			enemy = new InfectedMiner(rs, 11, 50, 350, 350, 0);
+=======
+			enemy = new Golem(rs,"spider",50,50);
+			System.out.println("golem");
+		} else if (randomNumber == 2) {
+			enemy = new InfectedMiner(rs,"spider",50,50);
+>>>>>>> master
 			System.out.println("infected miner");
 		}
 		enemy.addAllGameObjects();
@@ -110,13 +121,20 @@ public class Game extends Screen {
 		} else {
 			dl.onClick(e);
 		}
+<<<<<<< HEAD
 		// rs.setCurrentScreen(0);
+=======
+		dl.onClick(e);
+		pl.onClick(e);
+		//rs.setCurrentScreen(0);
+>>>>>>> master
 
 	}
 
 	@Override
 	public void mouseMovedScreen(MouseEvent e) {
 		// player card on hover hier doen
+		pl.onHover(e);
 	}
 
 	@Override
@@ -127,9 +145,19 @@ public class Game extends Screen {
 		rs.addGameObject(round, 0, 0);
 		rs.addGameObject(floor, 100, 0);
 
+<<<<<<< HEAD
 		dl.gameIntro();
 		player.addAllGameObjects();
 
+=======
+		pl.addAllGameObjects();
+		dl.gameIntro();
+
+		rs.addGameObject(pl,200,350);
+		pl.drawHP();
+		pl.drawDEF();
+		pl.takeDamage(90);
+>>>>>>> master
 	}
 
 }

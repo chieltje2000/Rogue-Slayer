@@ -14,4 +14,7 @@ public class Spider extends Enemy {
 		refreshDEF();
 	}
 
+    protected Spider(RogueSlayer rs, String typeEntity, int maxHP, int maxDEF) {
+        super(rs, typeEntity, maxHP, maxDEF);
+    }
 }

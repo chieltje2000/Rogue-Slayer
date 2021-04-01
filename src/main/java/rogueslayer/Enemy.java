@@ -1,5 +1,6 @@
 package rogueslayer;
 
+<<<<<<< HEAD
 import nl.han.ica.oopg.objects.TextObject;
 
 public abstract class Enemy extends Entity {
@@ -51,5 +52,21 @@ public abstract class Enemy extends Entity {
 		super.removeAllGameObjects();
 		rs.deleteGameObject(attackCount);
 	}
+=======
+public class Enemy extends Entity {
+>>>>>>> master
 
+    protected Enemy(RogueSlayer rs, String typeEntity, int maxHP, int maxDEF) {
+        super(rs, typeEntity, maxHP, maxDEF);
+    }
+
+    @Override
+    protected void onDeath(Entity entity) {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
 }

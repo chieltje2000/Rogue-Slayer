@@ -1,25 +1,29 @@
 package rogueslayer;
 
-import nl.han.ica.oopg.objects.Sprite;
+import nl.han.ica.oopg.objects.TextObject;
 
 public class HEAL extends Card{
 
-    private String sprite;
+    private TextObject tekst;
     private int heal = 10 ;
+    Player pl;
 
-    protected HEAL(RogueSlayer rs) {
-        super(new Sprite(RogueSlayer.MEDIA_URL.concat("heal.png")),rs);
+    protected HEAL(RogueSlayer rs, Player pl,int cardWidth, int cardHeight) {
+        super(rs,"healcard",cardWidth, cardHeight);
+        this.pl = pl;
     }
 
 
     @Override
-    public void doCardEffect(Entity entity) {
-        entity.hp += heal;
+    public void doCardEffect() {
+        pl.hp += heal;
     }
 
     @Override
-    public void drawCard() {
-
+    public void cardText(RogueSlayer rs){
+        tekst = new TextObject("Heal+10",18);
+        tekst.setForeColor(255,0,0,255);
+        rs.addGameObject(tekst,getX(),getY()+125);
     }
 
     @Override
