@@ -27,7 +27,9 @@ public class Game extends Screen{
 
 	@Override
 	public void mouseClickedScreen(MouseEvent e) {
+		dl.onClick(e);
 		//rs.setCurrentScreen(0);
+
 	}
 
 	@Override

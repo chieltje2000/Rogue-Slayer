@@ -11,6 +11,8 @@ public class Button extends SpriteObject implements Clickable {
     private int mouseX,mouseY;
     private RogueSlayer rs;
     private int x, y, width, height;
+    private Dialog dl;
+
      Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
          super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton +".png")));
          this.kindsButton=kindsButton;
@@ -21,6 +23,10 @@ public class Button extends SpriteObject implements Clickable {
          this.height=height;
     }
 
+    Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton, Dialog dl){
+        this(rs, x, y, width, height, kindsButton);
+        this.dl = dl;
+    }
     @Override
     public void update() {
 
@@ -49,6 +55,12 @@ public class Button extends SpriteObject implements Clickable {
             case "menu":
                 if (mouseCheck(x,y, width, height)){
                     rs.setCurrentScreen(0);
+                }
+                break;
+            case "dialog":
+                if (mouseCheck(x,y, width, height)){
+                    System.out.println("dialog");
+                dl.removeText();
                 }
                 break;
         }
