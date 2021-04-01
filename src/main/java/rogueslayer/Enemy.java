@@ -1,5 +1,5 @@
 package rogueslayer;
 
-public abstract class Enemy {
+public class Enemy {
 
 }

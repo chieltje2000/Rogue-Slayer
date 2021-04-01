@@ -10,7 +10,6 @@ public class Button extends SpriteObject implements Clickable {
     private String kindsButton;
     private int mouseX,mouseY;
     private RogueSlayer rs;
-    private MainMenu m;
     private int x, y, width, height;
      Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
          super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton +".png")));
