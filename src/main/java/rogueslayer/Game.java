@@ -1,4 +1,5 @@
 package rogueslayer;
+
 import nl.han.ica.oopg.objects.TextObject;
 
 import java.awt.event.MouseEvent;
@@ -15,14 +16,12 @@ public class Game extends Screen {
 	TextObject round;
 	TextObject floor;
 
-	Player pl = new Player(rs);
 	Dialog dl = new Dialog(rs);
 
 	public Game(RogueSlayer rs) {
 		super(rs);
-		round = new TextObject("ronde: " + currentRound, 20);
-		floor = new TextObject("floer: " + currentFloor, 20);
-
+		round = new TextObject("round: " + currentRound, 20);
+		floor = new TextObject("floor: " + currentFloor, 20);
 	}
 
 	@Override
@@ -35,32 +34,44 @@ public class Game extends Screen {
 	private void checkturn() {
 		if (!playerTurn) {
 			enemyTurn();
-			nextRound();
 		}
 	}
 
 	private void enemyTurn() {
-		if (currentRound == 5) {
-			// doe enemy special
+
+		if (enemy.hp <= 0) {
+			enemy.onDeath(player);
+			nextFloor();
+		} else {
+			enemy.atack(player);
+			if (player.hp <= 0) {
+				dl.gameLose();
+			}
+			nextRound();
+			if (currentRound == 5) {
+				enemy.special();
+			}
 		}
-		// do enemy aanval
 	}
 
 	private void nextRound() {
+		playerTurn = true;
 		currentRound += 1;
-		if (currentRound > 10) {
-			nextFloor();
-		}
 	}
 
 	public void nextFloor() {
 		// do enemy on death
 		// reset player deck
+		playerTurn = true;
+		System.out.println("hier");
+		enemy.removeAllGameObjects();
 		generateEnemy();
 		currentRound = 1;
 		currentFloor += 1;
 		if (currentFloor == 10) {
 			// do boss fight
+		} else if (currentFloor == 11) {
+			dl.gameWin();
 		}
 	}
 
@@ -68,30 +79,38 @@ public class Game extends Screen {
 		Random random = new Random();
 		int randomNumber = random.nextInt(3);
 		if (randomNumber == 0) {
-			enemy = new Spider();
+			enemy = new Spider(rs, 23, 50, 350, 350, 0);
 			System.out.println("spider");
+
 		} else if (randomNumber == 1) {
-			enemy = new Golem();
+			enemy = new Golem(rs, 48, 50, 350, 350, 0);
 			System.out.println("golem");
 		} else if (randomNumber == 2) {
-			enemy = new InfectedMiner();
+			enemy = new InfectedMiner(rs, 11, 50, 350, 350, 0);
 			System.out.println("infected miner");
 		}
-		// TODO Auto-generated method stub
+		enemy.addAllGameObjects();
+	}
 
+	private void generatePlayer() {
+		player = new Player(rs, 200, 350);
 	}
 
 	@Override
 	public void mouseClickedScreen(MouseEvent e) {
 		// player card klick hier
 		// test code
-		nextRound();
-		if (currentFloor > 10) {
-			rs.setCurrentScreen(0);
+//		nextRound();
+//		if (currentFloor > 10) {
+//			rs.setCurrentScreen(0);
+//		}
+		if (dl.isClicked) {
+			enemy.takeDamage(10);
+			playerTurn = false;
+		} else {
+			dl.onClick(e);
 		}
-
-		dl.onClick(e);
-		//rs.setCurrentScreen(0);
+		// rs.setCurrentScreen(0);
 
 	}
 
@@ -102,14 +121,15 @@ public class Game extends Screen {
 
 	@Override
 	public void addAllGameObjects() {
+		this.currentFloor = 1;
 		generateEnemy();
+		generatePlayer();
 		rs.addGameObject(round, 0, 0);
 		rs.addGameObject(floor, 100, 0);
-		
+
 		dl.gameIntro();
-		rs.addGameObject(pl,200,350);
-		pl.drawHP();
-		pl.drawDEF();
-		pl.takeDamage(90);
+		player.addAllGameObjects();
+
 	}
+
 }

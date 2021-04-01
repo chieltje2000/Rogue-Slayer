@@ -14,7 +14,7 @@ public class Button extends SpriteObject implements Clickable {
     private Dialog dl;
 
      Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
-         super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton +".png")));
+			super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton + ".png")));
          this.kindsButton=kindsButton;
          this.rs = rs;
          this.x=x;

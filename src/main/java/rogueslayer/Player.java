@@ -1,22 +1,50 @@
 package rogueslayer;
 
-import nl.han.ica.oopg.dashboard.Dashboard;
-import nl.han.ica.oopg.objects.Sprite;
+import java.util.ArrayList;
 
-public class Player extends Entity{
+public class Player extends Entity {
 
-    public Player(RogueSlayer rs) {
-        super(new Sprite(RogueSlayer.MEDIA_URL.concat("hero.png")),rs,50,50);
-    }
+	private ArrayList<Card> deck = new ArrayList<Card>();
+	private int energy;
+	private int handSize;
+	private ArrayList<Card> hand = new ArrayList<Card>();
+	private ArrayList<Card> discardPile = new ArrayList<Card>();
+	private static String sprite = "hero";
 
+	public Player(RogueSlayer rs, int x, int y) {
+		super(sprite, rs, 50, 50, x, y);
+	}
 
-    @Override
-    public void update() {
+	@Override
+	public void update() {
 
-    }
+	}
 
-    @Override
-    protected void onDeath() {
+	@Override
+	protected void onDeath(Player player) {
 
-    }
+	}
+
+	public void drawCard() {
+
+	}
+
+	public void useCard() {
+
+	}
+
+	public void discardCard() {
+
+	}
+
+	public void getNewCard() {
+
+	}
+
+	@Override
+	protected void onDeath() {
+		// TODO Auto-generated method stub
+
+	}
+
 }
