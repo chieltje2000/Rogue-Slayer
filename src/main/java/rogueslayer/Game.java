@@ -1,12 +1,8 @@
 package rogueslayer;
-
-import nl.han.ica.oopg.dashboard.Dashboard;
 import nl.han.ica.oopg.objects.TextObject;
 
 import java.awt.event.MouseEvent;
 import java.util.Random;
-
-import nl.han.ica.oopg.objects.TextObject;
 
 public class Game extends Screen {
 
@@ -21,11 +17,6 @@ public class Game extends Screen {
 
 	Player pl = new Player(rs);
 	Dialog dl = new Dialog(rs);
-	ATK atk = new ATK(rs);
-	DEF def = new DEF(rs);
-	HEAL heal = new HEAL(rs);
-	private TextObject hpCount;
-	private TextObject defCount;
 
 	public Game(RogueSlayer rs) {
 		super(rs);
@@ -36,7 +27,6 @@ public class Game extends Screen {
 
 	@Override
 	protected void updateScreen() {
-<<<<<<< HEAD
 		checkturn();
 		round.setText("ronde: " + currentRound);
 		floor.setText("floer: " + currentFloor);
@@ -87,25 +77,22 @@ public class Game extends Screen {
 			enemy = new InfectedMiner();
 			System.out.println("infected miner");
 		}
-=======
 		// TODO Auto-generated method stub
->>>>>>> master
+
 	}
 
 	@Override
 	public void mouseClickedScreen(MouseEvent e) {
-<<<<<<< HEAD
 		// player card klick hier
 		// test code
 		nextRound();
 		if (currentFloor > 10) {
 			rs.setCurrentScreen(0);
 		}
-=======
+
 		dl.onClick(e);
 		//rs.setCurrentScreen(0);
 
->>>>>>> master
 	}
 
 	@Override
@@ -115,24 +102,14 @@ public class Game extends Screen {
 
 	@Override
 	public void addAllGameObjects() {
-<<<<<<< HEAD
 		generateEnemy();
 		rs.addGameObject(round, 0, 0);
 		rs.addGameObject(floor, 100, 0);
-	}
-
-=======
+		
 		dl.gameIntro();
 		rs.addGameObject(pl,200,350);
 		pl.drawHP();
 		pl.drawDEF();
 		pl.takeDamage(90);
 	}
-
-/* word nog niet gebruikt voor iets
-	private void createDashboard(int dashboardWith, int dashboardHeight) {
-		Dashboard dashboard = new Dashboard(0, 300, dashboardWith, dashboardHeight);
-		rs.addDashboard(dashboard);
-	}*/
->>>>>>> master
 }
