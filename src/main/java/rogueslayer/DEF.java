@@ -8,8 +8,8 @@ public class DEF extends Card {
 	private int defense = 15;
 	private static String sprite = "defcard";
 
-	protected DEF(RogueSlayer rs, Player pl, int cardWidth, int cardHeight) {
-		super(rs, pl, sprite, cardWidth, cardHeight);
+	protected DEF( Player pl, int cardWidth, int cardHeight) {
+		super(pl, sprite, cardWidth, cardHeight);
 	}
 
 	@Override

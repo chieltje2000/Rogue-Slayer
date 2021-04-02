@@ -9,8 +9,8 @@ public class HEAL extends Card {
 
 	private static String sprite = "healcard";
 
-	protected HEAL(RogueSlayer rs, Player pl, int cardWidth, int cardHeight) {
-		super(rs, pl, sprite, cardWidth, cardHeight);
+	protected HEAL(Player pl, int cardWidth, int cardHeight) {
+		super(pl, sprite, cardWidth, cardHeight);
 	}
 
 	@Override

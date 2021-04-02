@@ -4,7 +4,7 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import nl.han.ica.oopg.objects.TextObject;
 
-public abstract class Entity extends SpriteObject {
+public class Entity extends SpriteObject {
 
 	protected int hp;
 	protected int maxHP;
@@ -33,7 +33,7 @@ public abstract class Entity extends SpriteObject {
 
 	}
 
-	protected void takeDamage(int damage) {
+	public void takeDamage(int damage) {
 		int restDamage = 0;
 		def -= damage;
 		if (def < 0) {
@@ -62,23 +62,23 @@ public abstract class Entity extends SpriteObject {
 		defCount.setText("DEF: " + def + "/" + maxDEF);
 	}
 
-	protected void addAllGameObjects() {
+	public void addAllGameObjects() {
 		rs.addGameObject(this, x, y);
 		drawHP();
 		drawDEF();
 	}
 
-	protected void removeAllGameObjects() {
+	public void removeAllGameObjects() {
 		rs.deleteGameObject(defCount);
 		rs.deleteGameObject(hpCount);
 		rs.deleteGameObject(this);
 	}
 
-	protected void refreshHP() {
+	public void refreshHP() {
 		hpCount.setText("HP: " + hp + "/" + maxHP);
 	}
 
-	protected void refreshDEF() {
+	public void refreshDEF() {
 		defCount.setText("DEF: " + def + "/" + maxDEF);
 	}
 }

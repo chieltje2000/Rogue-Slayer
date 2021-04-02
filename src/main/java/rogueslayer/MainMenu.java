@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class MainMenu extends Screen{
 
-    private String text = "test";
     ArrayList<Button> buttons = new ArrayList<Button>();
 
     MainMenu(RogueSlayer rogueSlayer){
@@ -16,8 +15,8 @@ public class MainMenu extends Screen{
     }
 
     @Override
-    protected void updateScreen() {
-     //System.out.println("test");
+    public void updateScreen() {
+  
     }
 
     @Override
@@ -37,16 +36,14 @@ public class MainMenu extends Screen{
         rs.addGameObject(Titel,525,100);
 
         for (int i = 0; i<buttons.size();i++){
-            rs.addGameObject(buttons.get(i),565,i*100+300);
+            rs.addGameObject(buttons.get(i),565,i*100+400);
         }
     }
 
     public void setupMainMenu(){
-        Button menu = new Button(rs,565,300,143,75, "menu");
         Button start = new Button(rs,565,400,143,75, "start");
         Button exit = new Button(rs,565,500,143 ,75, "exit");
 
-        buttons.add(menu);
         buttons.add(start);
         buttons.add(exit);
     }

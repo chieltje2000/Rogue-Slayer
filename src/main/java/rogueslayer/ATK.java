@@ -4,13 +4,13 @@ import nl.han.ica.oopg.objects.TextObject;
 
 public class ATK extends Card {
 
-	Enemy enemy;
+	public Enemy enemy;
 	private TextObject tekst;
 	private int damage = 20;
 	private static String sprite = "atkcard";
 
-	protected ATK(RogueSlayer rs,Player pl, Enemy enemy, int cardWidth, int cardHeight) {
-		super(rs, pl, sprite, cardWidth, cardHeight);
+	ATK(Player pl, Enemy enemy, int cardWidth, int cardHeight) {
+		super(pl, sprite, cardWidth, cardHeight);
 		this.enemy = enemy;
 	}
 

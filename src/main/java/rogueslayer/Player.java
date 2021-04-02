@@ -15,10 +15,9 @@ public class Player extends Entity {
 	public Card cardToDiscard = null;
 	private ArrayList<Card> discardPile = new ArrayList<Card>();
 	private static String sprite = "hero";
-	Enemy enemy;
+	private Enemy enemy;
 	private int cardWidth = 120;
 	private int cardHeight = 191;
-	Dialog dl;
 
 	public Player(RogueSlayer rs, int x, int y) {
 		super(sprite, rs, 50, 50, x, y);
@@ -31,7 +30,7 @@ public class Player extends Entity {
 		hand.add(deck.get(randomNumber));
 		deck.remove(randomNumber);
 		deckSize -= 1;
-		
+
 	}
 
 	public void discardCard(Card card) {
@@ -40,42 +39,42 @@ public class Player extends Entity {
 		Card cardToDiscard = hand.get(index);
 		discardPile.add(cardToDiscard);
 		hand.set(index, getNewCard());
-		
+
 		resetHand();
 	}
 
 	public void resetDeck() {
-		 ArrayList<Card> resetDeck = new ArrayList<Card>();
+		ArrayList<Card> resetDeck = new ArrayList<Card>();
 		for (Card card : deck) {
 			resetDeck.add(card);
 		}
-		for (Card card: discardPile) {
+		for (Card card : discardPile) {
 			resetDeck.add(card);
 		}
 		discardPile.clear();
 		System.out.println(discardPile.size());
 	}
-	
+
 	private Card getNewCard() {
 		Card card = null;
 		Random random = new Random();
 		int randomNumber = random.nextInt(4);
 		if (randomNumber == 0) {
-			card = new ATK(rs, this, enemy, cardWidth, cardHeight);
+			card = new ATK(this, enemy, cardWidth, cardHeight);
 		} else if (randomNumber == 1) {
-			card = new DEF(rs, this, cardWidth, cardHeight);
+			card = new DEF(this, cardWidth, cardHeight);
 		} else if (randomNumber == 2 || randomNumber == 3) {
-			card = new HEAL(rs, this, cardWidth, cardHeight);
+			card = new HEAL(this, cardWidth, cardHeight);
 		}
-		
+
 		return card;
 	}
-	
+
 	public void reward() {
 		deck.add(getNewCard());
-		
+
 	}
-	
+
 	public void enemyChanged(Enemy enemy) {
 		for (Card card : hand) {
 			if (card instanceof ATK) {
@@ -115,7 +114,7 @@ public class Player extends Entity {
 		for (Card i : hand) {
 			i.onClick(e);
 		}
-		if(cardToDiscard != null) {
+		if (cardToDiscard != null) {
 			discardCard(cardToDiscard);
 		}
 	}
@@ -131,17 +130,18 @@ public class Player extends Entity {
 			rs.deleteGameObject(card);
 		}
 	}
+
 	public void resetHand() {
 
 		for (int i = 0; i < handSize; i++) {
 			rs.addGameObject(hand.get(i), i * 150 + 275, 500);
 			hand.get(i).cardText(rs);
 		}
-		
+
 	}
 
 	@Override
-	protected void addAllGameObjects() {
+	public void addAllGameObjects() {
 		super.addAllGameObjects();
 		generateDeck();
 		generateHand();

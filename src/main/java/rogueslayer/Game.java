@@ -7,25 +7,24 @@ import java.util.Random;
 
 public class Game extends Screen {
 
-	int currentFloor = 1;
-	int bossFloor = 10;
-	int currentRound = 1;
-	boolean playerTurn = true;
-	Player player;
-	Enemy enemy;
-	TextObject round;
-	TextObject floor;
+	private int currentFloor = 1;
+	private int bossFloor = 10;
+	private int currentRound = 1;
+	private boolean playerTurn = true;
+	private Player player;
+	private Enemy enemy;
+	private TextObject round;
+	private TextObject floor;
+	private Dialog dl = new Dialog(rs);
 
-	Dialog dl = new Dialog(rs);
-
-	public Game(RogueSlayer rs) {
+	Game(RogueSlayer rs) {
 		super(rs);
 		round = new TextObject("round: " + currentRound, 20);
 		floor = new TextObject("floor: " + currentFloor, 20);
 	}
 
 	@Override
-	protected void updateScreen() {
+	public void updateScreen() {
 		checkturn();
 		round.setText("ronde: " + currentRound);
 		floor.setText("floer: " + currentFloor);
@@ -38,7 +37,6 @@ public class Game extends Screen {
 	}
 
 	private void enemyTurn() {
-
 		if (enemy.hp <= 0) {
 			nextFloor();
 		} else {
@@ -54,16 +52,11 @@ public class Game extends Screen {
 	}
 
 	private void nextRound() {
-//		player.refreshDEF();
-//		player.refreshHP();
-//		enemy.refreshDEF();
-//		enemy.refreshHP();
-//		player.drawCard();
 		playerTurn = true;
 		currentRound += 1;
 	}
 
-	public void nextFloor() {
+	private void nextFloor() {
 		// do enemy on death
 		// reset player deck
 		playerTurn = true;
@@ -74,9 +67,9 @@ public class Game extends Screen {
 		generateEnemy();
 		currentRound = 1;
 		currentFloor += 1;
-		if (currentFloor == 10) {
+		if (currentFloor == bossFloor) {
 			enemy.bossMode();
-		} else if (currentFloor == 11) {
+		} else if (currentFloor == bossFloor+1) {
 			dl.gameWin();
 		}
 	}
@@ -115,7 +108,6 @@ public class Game extends Screen {
 
 	@Override
 	public void mouseMovedScreen(MouseEvent e) {
-		// player card on hover hier doen
 		player.onHover(e);
 	}
 

@@ -6,17 +6,15 @@ import java.awt.event.MouseEvent;
 
 public abstract class Card extends SpriteObject implements Clickable {
 
-	private RogueSlayer rs;
 	private int cost;
 	private int width, height;
 	private int mouseX, mouseY;
 	Player pl;
 	Entity entity;
 
-	protected Card(RogueSlayer rs, Player pl, String cardType, int width, int height) {
+	Card( Player pl, String cardType, int width, int height) {
 		super(new Sprite(RogueSlayer.MEDIA_URL.concat(cardType + ".png")));
 		this.pl= pl;
-		this.rs = rs;
 		this.width = width;
 		this.height = height;
 	}
