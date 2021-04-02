@@ -44,6 +44,8 @@ public abstract class Enemy extends Entity {
 		boss = true;
 		bossText = new TextObject("BOSS", 20);
 		bossText.setForeColor(0, 0, 255, 255);
+		hp *= 2;
+		def *= 2;
 		rs.addGameObject(bossText, getX(), getY() - 150);
 	}
 	

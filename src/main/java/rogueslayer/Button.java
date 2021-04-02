@@ -13,7 +13,6 @@ public class Button extends SpriteObject implements Clickable {
     private RogueSlayer rs;
     private int x, y, width, height;
     private Dialog dl;
-    private Card card;
 
     //button
      Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
