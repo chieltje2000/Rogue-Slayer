@@ -59,11 +59,11 @@ public class Player extends Entity {
 		Card card = null;
 		Random random = new Random();
 		int randomNumber = random.nextInt(4);
-		if (randomNumber == 0) {
+		if (randomNumber == 0 ||  randomNumber == 1) {
 			card = new ATK(this, enemy, cardWidth, cardHeight);
-		} else if (randomNumber == 1) {
+		} else if (randomNumber == 2) {
 			card = new DEF(this, cardWidth, cardHeight);
-		} else if (randomNumber == 2 || randomNumber == 3) {
+		} else if (randomNumber == 3) {
 			card = new HEAL(this, cardWidth, cardHeight);
 		}
 

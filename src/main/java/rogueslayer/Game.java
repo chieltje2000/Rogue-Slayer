@@ -78,13 +78,13 @@ public class Game extends Screen {
 		Random random = new Random();
 		int randomNumber = random.nextInt(3);
 		if (randomNumber == 0) {
-			enemy = new Spider(rs, 23, 50, 350, 350, 10);
+			enemy = new Spider(rs, 23, 50, 1000, 350, 10);
 
 
 		} else if (randomNumber == 1) {
-			enemy = new Golem(rs, 48, 50, 350, 350, 10);
+			enemy = new Golem(rs, 48, 50, 1000, 350, 10);
 		} else if (randomNumber == 2) {
-			enemy = new InfectedMiner(rs, 11, 50, 350, 350, 10);
+			enemy = new InfectedMiner(rs, 11, 50, 1000, 350, 10);
 		}
 		enemy.addAllGameObjects();
 		player.enemyChanged(enemy);
