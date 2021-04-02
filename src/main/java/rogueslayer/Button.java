@@ -13,11 +13,10 @@ public class Button extends SpriteObject implements Clickable {
     private RogueSlayer rs;
     private int x, y, width, height;
     private Dialog dl;
-    private Card card;
 
     //button
      Button(RogueSlayer rs, int x, int y, int width, int height, String kindsButton){
-         super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton +".png")));
+			super(new Sprite(RogueSlayer.MEDIA_URL.concat(kindsButton + ".png")));
          this.kindsButton=kindsButton;
          this.rs = rs;
          this.x=x;
