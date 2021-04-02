@@ -10,8 +10,6 @@ public abstract class Entity extends SpriteObject {
     protected int maxHP = 10;
     protected int def = 10;
     protected int maxDEF = 10;
-    protected int x;
-    protected int y;
     protected RogueSlayer rs;
     private TextObject hpCount;
     private TextObject defCount;
@@ -24,7 +22,7 @@ public abstract class Entity extends SpriteObject {
         this.hp = maxHP;
         this.maxDEF = maxDEF;
         this.def = maxDEF;
-
+        this.typeEntity = typeEntity;
     }
 
     protected abstract void onDeath(Entity entity);

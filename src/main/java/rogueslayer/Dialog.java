@@ -13,6 +13,7 @@ public class Dialog{
     private int buttonY = 400;
     private int textX = 100;
     private int textY = textX;
+
     public Dialog(RogueSlayer rs) {
         this.rs = rs;
     }
