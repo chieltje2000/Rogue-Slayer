@@ -10,7 +10,6 @@ public abstract class Card extends SpriteObject implements Clickable {
 	private int width, height;
 	private int mouseX, mouseY;
 	Player pl;
-	Entity entity;
 
 	Card( Player pl, String cardType, int width, int height) {
 		super(new Sprite(RogueSlayer.MEDIA_URL.concat(cardType + ".png")));

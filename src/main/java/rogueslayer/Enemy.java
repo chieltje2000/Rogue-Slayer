@@ -23,14 +23,12 @@ public abstract class Enemy extends Entity {
 
 	@Override
 	public void addAllGameObjects() {
-		// TODO Auto-generated method stub
 		super.addAllGameObjects();
 		drawAtack();
 	}
 
 	@Override
 	public void removeAllGameObjects() {
-		// TODO Auto-generated method stub
 		super.removeAllGameObjects();
 		rs.deleteGameObject(attackCount);
 		if (boss) {

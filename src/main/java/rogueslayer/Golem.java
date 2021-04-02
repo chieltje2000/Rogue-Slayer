@@ -1,6 +1,5 @@
 package rogueslayer;
 
-
 public class Golem extends Enemy {
 	private static String sprite = "golem";
 
